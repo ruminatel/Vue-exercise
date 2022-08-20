@@ -20,6 +20,7 @@ export default {
     return {
       message : 'hello 123',
       userinfo : {username : 'zx', age : 18},
+      // 定义 countFromSon 来接收子组件传递过来的数据
       countfromson: 0
     }
   },
@@ -28,6 +29,7 @@ export default {
     Right
   },
   methods: {
+     // 获取子组件传递过来的数据
     getnewcount(val) {
       this.countfromson = val
     }

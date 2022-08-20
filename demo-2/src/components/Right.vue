@@ -13,7 +13,9 @@ export default {
   methods: {
     add() {
       //console.log(this);
+      // 让子组件的 count 值自增 +1
       this.count += 1,
+      // 把自增的结果，传给父组件
       this.$emit('numchangs',this.count)
     }
   }
