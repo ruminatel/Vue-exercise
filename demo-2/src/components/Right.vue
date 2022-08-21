@@ -2,13 +2,19 @@
   <div class="right-container">
     <h3>Right 组件 --- {{ count }}</h3>
     <button @click="add">点击</button>
+    <hr>
+    <p>{{ msgfromleft }}</p>
   </div>
 </template>
 
 <script>
+import bus from './eventBus.js'
 export default {
   data() {
-    return { count: 0}
+    return { 
+      count: 0,
+      msgfromleft : ''
+      }
   },
   methods: {
     add() {
@@ -18,6 +24,11 @@ export default {
       // 把自增的结果，传给父组件
       this.$emit('numchangs',this.count)
     }
+  },
+  created() {
+    bus.$on('share',(val) => {
+       this.msgfromleft = val
+    })
   }
 }
 </script>
