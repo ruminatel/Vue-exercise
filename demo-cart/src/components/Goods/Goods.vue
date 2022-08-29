@@ -4,8 +4,8 @@
     <div class="thumb">
       <div class="custom-control custom-checkbox">
         <!-- 复选框 -->
-        <input type="checkbox" class="custom-control-input" id="cb1" :checked="true" />
-        <label class="custom-control-label" for="cb1">
+        <input type="checkbox" class="custom-control-input" :id="'cb' + id" :checked="state" @change="stateChange"/>
+        <label class="custom-control-label" :for="'cb' + id">
           <!-- 商品的缩略图 -->
           <img :src="pic" alt="" />
         </label>
@@ -17,7 +17,7 @@
       <h6 class="goods-title">{{title}}</h6>
       <div class="goods-info-bottom">
         <!-- 商品价格 -->
-        <span class="goods-price">￥0</span>
+        <span class="goods-price">￥{{price}}</span>
         <!-- 商品的数量 -->
       </div>
     </div>
@@ -27,6 +27,10 @@
 <script>
 export default {
   props: {
+    id: {
+      required: true,
+      type: Number
+    },
     title: {
       defaule: '',
       type: String
@@ -34,6 +38,22 @@ export default {
     pic: {
       defaule: '',
       type: String
+    },
+    price: {
+      defaule: 0,
+      type: Number
+    },
+    state: {
+      defaule: true,
+      type: Boolean
+    }
+  },
+  methods: {
+    stateChange(e) {
+      const newState = e.target.checked
+      // console.log(e);
+      // console.log(newState);
+      this.$emit('state-change',{id: this.id, value: newState})
     }
   }
 }
