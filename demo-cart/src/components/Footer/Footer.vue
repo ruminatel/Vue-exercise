@@ -9,7 +9,7 @@
     <!-- 中间的合计 -->
     <div>
       <span>合计：</span>
-      <span class="total-price">￥{{ 0 }}</span>
+      <span class="total-price">￥{{ amount.toFixed(2) }}</span>
     </div>
 
     <!-- 结算按钮 -->
@@ -24,6 +24,10 @@ export default {
     isfull: {
       defalue: true,
       type: Boolean
+    },
+    amount: {
+      defalue: 0,
+      type: Number
     }
   },
   methods: {
