@@ -1,7 +1,7 @@
 <template>
   <div class="number-container d-flex justify-content-center align-items-center">
     <!-- 减 1 的按钮 -->
-    <button type="button" class="btn btn-light btn-sm">-</button>
+    <button type="button" class="btn btn-light btn-sm" @click="sub">-</button>
     <!-- 购买的数量 -->
     <span class="number-box">{{ num }}</span>
     <!-- 加 1 的按钮 -->
@@ -25,6 +25,12 @@ export default {
   methods: {
     add() {
       const obj = {id: this.id, value: this.num + 1}
+      // console.log(obj);
+      bus.$emit('share',obj)
+    },
+    sub() {
+      if(this.num - 1 === 0) return
+      const obj = {id: this.id, value: this.num - 1}
       // console.log(obj);
       bus.$emit('share',obj)
     }

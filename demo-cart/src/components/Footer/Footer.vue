@@ -13,7 +13,7 @@
     </div>
 
     <!-- 结算按钮 -->
-    <button type="button" class="btn btn-primary btn-settle">结算（{{ 0 }}）</button>
+    <button type="button" class="btn btn-primary btn-settle">结算（{{ all }} ）</button>
   </div>
 </template>
 
@@ -26,6 +26,10 @@ export default {
       type: Boolean
     },
     amount: {
+      defalue: 0,
+      type: Number
+    },
+    all: {
       defalue: 0,
       type: Number
     }

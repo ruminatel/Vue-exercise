@@ -16,7 +16,7 @@
     ></Goods>
 
     
-    <Footer :isfull="fullState" :amount="amt" @full-change="getFullChange"></Footer>
+    <Footer :isfull="fullState" :amount="amt" :all="total" @full-change="getFullChange"></Footer>
   </div>
 </template>
 
@@ -41,6 +41,11 @@ export default {
       return this.List
       .filter(item => item.goods_state)
       .reduce((total,item) => (total += item.goods_price * item.goods_count),0)
+    },
+    total() {
+      return this.List.filter(item => item.goods_state).reduce((t , item) => {
+        return t += item.goods_count
+      },0)
     }
   },
   created() {
