@@ -14,12 +14,12 @@
     <!-- 右侧信息区域 -->
     <div class="goods-info">
       <!-- 商品标题 -->
-      <h6 class="goods-title">{{title}}</h6>
+      <h6 class="goods-title">{{ title }}</h6>
       <div class="goods-info-bottom">
         <!-- 商品价格 -->
-        <span class="goods-price">￥{{price}}</span>
+        <span class="goods-price">{{ price }}</span>
         <!-- 商品的数量 -->
-        <Counter :num="count" :id="id"></Counter>
+       <Counter></Counter>
       </div>
     </div>
   </div>
@@ -27,44 +27,41 @@
 
 <script>
 import Counter from '@/components/Counter/Counter.vue'
+
 export default {
-  props: {
-    id: {
-      required: true,
-      type: Number
-    },
-    title: {
-      defaule: '',
-      type: String
-    },
-    pic: {
-      defaule: '',
-      type: String
-    },
-    price: {
-      defaule: 0,
-      type: Number
-    },
-    state: {
-      defaule: true,
-      type: Boolean
-    },
-    count: {
-      defaule: 1,
-      type: Number
-    }
+ props: {
+  state: {
+    type: Boolean,
+    default: true
   },
-  methods: {
-    stateChange(e) {
-      const newState = e.target.checked
-      // console.log(e);
-      // console.log(newState);
-      this.$emit('state-change',{id: this.id, value: newState})
-    }
+  price: {
+    type: Number,
+    default: 0
   },
-  components: {
-    Counter
+  title: {
+    type: String,
+    default: ''
+  },
+  pic: {
+    type: String,
+    default: ''
+  },
+  id: {
+    type: Number,
+    required: true
   }
+ },
+ methods: {
+  stateChange(e) {
+    console.log(e);
+    console.log(this.id);
+    const newState = e.target.checked
+    this.$emit('state-change',{id : this.id, value : newState})
+  }
+ },
+ components: {
+  Counter
+ }
 }
 </script>
 
