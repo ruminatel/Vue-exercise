@@ -10,11 +10,12 @@
     :title="item.goods_name"
     :price="item.goods_price"
     :state="item.goods_state"
+    :count="item.goods_count"
     :id="item.id"
     @state-change="getNewState"
   ></Goods>
 
- <Footer></Footer>
+ <Footer :isfull="fullstate" :amount="amt" @full-change="newfullchange"></Footer>
   </div>
 </template>
 
@@ -25,6 +26,8 @@ import Footer from '@/components/Footer/Footer.vue'
 // 导入 axios 请求库
 import axios from 'axios'
 
+import bus from '@/components/eventBus.js'
+
 export default {
   data() {
     return {
@@ -33,6 +36,25 @@ export default {
   },
   created() {
     this.initCartList()
+
+    bus.$on('share',val => {
+      this.list.some(item => {
+        if(item.id === val.id) {
+          item.goods_count = val.value
+          return true
+        }
+      })
+    })
+  },
+  computed: {
+     fullstate() {
+      return this.list.every(item => item.goods_state)
+     },
+     //已勾选商品的总价格
+     amt() {
+      return this.list.filter(item => item.goods_state)
+      .reduce((total,item) => (total += item.goods_count * item.goods_price),0)
+     }
   },
   methods: {
     async initCartList() {
@@ -44,18 +66,22 @@ export default {
     
     },
     getNewState(val) {
-      this.liat.some(item => {
+      this.list.some(item => {
         if(item.id === val.id) {
           item.goods_state = val.value
             return true
         }
       })
+    },
+    newfullchange(val) {
+      this.list.filter(item => item.goods_state = val)
     }
   },
   components: {
     Header,
     Goods,
     Footer
+
   }
 }
 </script>

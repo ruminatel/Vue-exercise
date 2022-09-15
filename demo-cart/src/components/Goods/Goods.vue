@@ -19,7 +19,7 @@
         <!-- 商品价格 -->
         <span class="goods-price">{{ price }}</span>
         <!-- 商品的数量 -->
-       <Counter></Counter>
+       <Counter :num="count" :id="id"></Counter>
       </div>
     </div>
   </div>
@@ -49,12 +49,16 @@ export default {
   id: {
     type: Number,
     required: true
+  },
+  count: {
+    type: Number,
+    default: 1
   }
  },
  methods: {
   stateChange(e) {
-    console.log(e);
-    console.log(this.id);
+    // console.log(e);
+    // console.log(this.id);
     const newState = e.target.checked
     this.$emit('state-change',{id : this.id, value : newState})
   }
