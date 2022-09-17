@@ -56,6 +56,7 @@ export default {
   }
  },
  methods: {
+  // 只要复选框的选中状态发生了变化，就会调用这个处理函数
   stateChange(e) {
     // console.log(e);
     // console.log(this.id);

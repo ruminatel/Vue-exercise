@@ -15,7 +15,7 @@
     @state-change="getNewState"
   ></Goods>
 
- <Footer :isfull="fullstate" :amount="amt" @full-change="newfullchange"></Footer>
+ <Footer :isfull="fullstate" :amount="amt" :all="total" @full-change="newfullchange"></Footer>
   </div>
 </template>
 
@@ -31,10 +31,12 @@ import bus from '@/components/eventBus.js'
 export default {
   data() {
     return {
+       // 用来存储购物车的列表数据，默认为空数组
       list: []
     }
   },
   created() {
+    // 调用请求数据的方法
     this.initCartList()
 
     bus.$on('share',val => {
@@ -47,6 +49,7 @@ export default {
     })
   },
   computed: {
+    // 动态计算出全选的状态是 true 还是 false
      fullstate() {
       return this.list.every(item => item.goods_state)
      },
@@ -54,9 +57,15 @@ export default {
      amt() {
       return this.list.filter(item => item.goods_state)
       .reduce((total,item) => (total += item.goods_count * item.goods_price),0)
+     },
+     // 已勾选商品的总数量
+     total() {
+      return this.list.filter(item => item.goods_state)
+      .reduce((total,item) => (total += item.goods_count),0)
      }
   },
   methods: {
+     // 封装请求列表数据的方法
     async initCartList() {
       const {data : res} = await axios.get('https://www.escook.cn/api/cart')
       console.log(res);
@@ -65,6 +74,7 @@ export default {
      }
     
     },
+    // 接收子组件传递过来的数据
     getNewState(val) {
       this.list.some(item => {
         if(item.id === val.id) {
@@ -73,6 +83,7 @@ export default {
         }
       })
     },
+    // 接收 Footer 子组件传递过来的全选按钮的状态
     newfullchange(val) {
       this.list.filter(item => item.goods_state = val)
     }
