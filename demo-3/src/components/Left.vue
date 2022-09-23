@@ -15,7 +15,10 @@ export default {
     }
   },
   created() {
-    console.log('Left这件被创建了');
+    console.log('Left组件被创建了');
+  },
+  activated() {
+    console.log('left组件被激活了');
   }
 }
 </script>
