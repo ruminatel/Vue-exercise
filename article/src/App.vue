@@ -1,20 +1,18 @@
 <template>
   <div>
-    <keep-alive include="Home">
-      <router-view></router-view>
-    </keep-alive>
+    <router-view></router-view>
 
-    <van-tabbar route>
+    <!-- <van-tabbar route>
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
       <van-tabbar-item icon="user-o" to="/user">我的</van-tabbar-item>
-    </van-tabbar>
+    </van-tabbar> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
-}
+  // eslint-disable-next-line semi
+};
 </script>
 
 <style lang="less" scoped></style>
