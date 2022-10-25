@@ -1,5 +1,14 @@
 <template>
-  <div class="home-container"></div>
+  <div class="home-container">
+    <MyHeader></MyHeader>
+    <br />
+    <div class="home-main-box">
+      <!-- 左侧侧边栏 -->
+      <MyAside></MyAside>
+      <!-- 右侧主体区域 -->
+      <div class="home-main-body">123</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -26,5 +35,18 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+.home-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .home-main-box {
+    height: 100%;
+    display: flex;
+    .home-main-body {
+      padding: 15px;
+      flex: 1;
+    }
+  }
+}
 </style>

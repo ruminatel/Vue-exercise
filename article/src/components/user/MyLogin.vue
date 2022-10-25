@@ -71,5 +71,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  lang='less' scoped>
+.from-login {
+  width: 300px;
+  margin: 200px auto;
+}
 </style>
