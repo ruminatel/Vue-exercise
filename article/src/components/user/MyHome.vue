@@ -6,7 +6,9 @@
       <!-- 左侧侧边栏 -->
       <MyAside></MyAside>
       <!-- 右侧主体区域 -->
-      <div class="home-main-body">123</div>
+      <div class="home-main-body">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>

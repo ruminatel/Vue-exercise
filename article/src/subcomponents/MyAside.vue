@@ -10,29 +10,29 @@
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <router-link><span>用户管理</span></router-link>
+          <router-link to="/home/users">用户管理</router-link>
         </template>
       </el-submenu>
       <el-menu-item index="1">
         <i class="el-icon-menu"></i>
-        <router-link>权限管理</router-link>
+        <router-link to="/home/rights">权限管理</router-link>
       </el-menu-item>
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <router-link>商品管理</router-link>
+          <router-link to="/home/goods">商品管理</router-link>
         </template>
       </el-submenu>
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <router-link>订单管理</router-link>
+          <router-link to="/home/order">订单管理</router-link>
         </template>
       </el-submenu>
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <router-link>系统设置</router-link>
+          <router-link to="/home/settings">系统设置</router-link>
         </template>
       </el-submenu>
     </el-menu>
