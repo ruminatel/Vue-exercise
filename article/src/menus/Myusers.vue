@@ -19,7 +19,7 @@
           <td>{{ item.age }}</td>
           <td>{{ item.position }}</td>
           <td>
-            <a href="#">详情</a>
+            <a href="#" @click.prevent="gotoDetail(item.id)">详情</a>
           </td>
         </tr>
       </tbody>
@@ -42,6 +42,16 @@ export default {
       ],
       // eslint-disable-next-line indent, semi
     };
+    // eslint-disable-next-line comma-dangle
+  },
+  methods: {
+    gotoDetail(id) {
+      // eslint-disable-next-line quotes, semi
+      console.log("ok");
+      // eslint-disable-next-line comma-dangle, quotes, semi
+      this.$router.push("/home/userDetail/" + id);
+      // eslint-disable-next-line comma-dangle
+    },
     // eslint-disable-next-line comma-dangle
   },
   // eslint-disable-next-line semi

@@ -10,6 +10,8 @@ import Mygoods from '@/menus/Mygoods.vue'
 import Myorder from '@/menus/Myorder.vue'
 import Mysettings from '@/menus/Mysettings.vue'
 
+import MyuserDetail from '@/components/user/MyuserDetail.vue'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -19,8 +21,10 @@ const router = new VueRouter({
     {
       path: '/home',
       component: MyHome,
+      redirect: '/home/users',
       children: [
         { path: 'users', component: Myusers },
+        { path: 'userDetail/:id', component: MyuserDetail },
         { path: 'rights', component: Myrights },
         { path: 'goods', component: Mygoods },
         { path: 'order', component: Myorder },
