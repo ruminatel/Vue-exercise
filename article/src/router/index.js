@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import pathArr from './pathArr'
 
 import Login from '@/components/user/MyLogin.vue'
 import MyHome from '@/components/user/MyHome.vue'
@@ -36,7 +37,7 @@ const router = new VueRouter({
 
 // eslint-disable-next-line space-before-function-paren
 router.beforeEach(function (to, from, next) {
-  if (to.path === '/home') {
+  if (pathArr.indexOf(to.path) !== -1) {
     const tokin = localStorage.getItem('tokin')
     if (tokin) {
       // eslint-disable-next-line no-undef
