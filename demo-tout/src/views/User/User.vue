@@ -42,8 +42,29 @@
 </template>
 
 <script>
+import request from '@/utils/request.js'
 export default {
-  name: 'UsEr'
+  name: 'UsEr',
+  data () {
+    return {
+      page: 1,
+      limit: 5
+    }
+  },
+  created () {
+    this.initAricleLiist()
+  },
+  methods: {
+    async initAricleLiist () {
+      const { data: res } = await request.get('/articles', {
+        params: {
+          _page: this.page,
+          _limit: this.limit
+        }
+      })
+      console.log(res)
+    }
+  }
 }
 </script>
 
