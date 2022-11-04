@@ -42,7 +42,8 @@
 </template>
 
 <script>
-import request from '@/utils/request.js'
+// import request from '@/utils/request.js'
+import { getAritcleListAPI } from '@/api/articleAPI.js'
 export default {
   name: 'UsEr',
   data () {
@@ -56,12 +57,7 @@ export default {
   },
   methods: {
     async initAricleLiist () {
-      const { data: res } = await request.get('/articles', {
-        params: {
-          _page: this.page,
-          _limit: this.limit
-        }
-      })
+      const { data: res } = await getAritcleListAPI(this.page, this.limit)
       console.log(res)
     }
   }
