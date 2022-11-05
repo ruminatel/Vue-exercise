@@ -68,7 +68,7 @@ export default {
         // 表示用户触发 下拉刷新，新数据在前，旧数据在后
         // 下拉加载更多，应该是[新数据，旧数据]
         this.article = [...res, ...this.article]
-        this.refreshing = true
+        this.refreshing = false
       } else {
         // 表示用户触发  上滑刷新数据，旧数据在前，新数据在后
         // 上拉加载更多，应该是[旧数据，新数据]
@@ -91,7 +91,7 @@ export default {
       //  1.让页码值加1
       this.page++
       // 2.重新发起请求拿到数据
-      this.initArticleList()
+      this.initArticleList(this.refreshing)
     }
   },
   components: {
